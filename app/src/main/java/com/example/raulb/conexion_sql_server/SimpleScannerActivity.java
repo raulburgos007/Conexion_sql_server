@@ -93,9 +93,8 @@ public class SimpleScannerActivity extends Activity implements ZBarScannerView.R
 
     @Override
     public void handleResult(Result rawResult) {
-        final String code = rawResult.getContents();
-        final String format = rawResult.getBarcodeFormat().getName();
-        final String datos = "Contenido: " + code + ", Formato: " + format;
+        final String datos = rawResult.getContents();
+        //final String format = rawResult.getBarcodeFormat().getName();
         try{
             Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             Ringtone r = RingtoneManager.getRingtone(getApplicationContext(),notification);
@@ -105,13 +104,20 @@ public class SimpleScannerActivity extends Activity implements ZBarScannerView.R
 
         } catch (Exception e) {
             Log.e(TAG, e.getLocalizedMessage());
+            Intent returnIntent = new Intent();
+            setResult(Activity.RESULT_OK, returnIntent);
+            finish();
         }
         ;
-        Bundle resultado = new Bundle();
-        resultado.putString("datos",datos);
-        Intent miIntent = new Intent(this, MainActivity.class);
-        miIntent.putExtras(resultado);
-        startActivity(miIntent);
+        //Bundle resultado = new Bundle();
+        //resultado.putString("datos",datos);
+        //Intent miIntent = new Intent(this, MainActivity.class);
+        //miIntent.putExtras(resultado);
+        //startActivity(miIntent);
+        Intent returnIntent = new Intent();
+        returnIntent.putExtra("datos", datos);
+        setResult(Activity.RESULT_OK, returnIntent);
+        finish();
         //showMessageDialog("Resultado", fullMessage, false);
         //mScannerView.resumeCameraPreview(this);
     }

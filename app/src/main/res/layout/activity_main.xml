@@ -46,26 +46,31 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/editTextCodActivo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:enabled="false"
+            android:hint="Aquí se mostrará el código de activo"
+            android:inputType="text" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Notas"
+            android:text="Detalles de la etiqueta"
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/editTextDetalles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:width="2dp"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:enabled="false"
+            android:hint="Aquí se mostrará el contenido de la etiqueta"
+            android:inputType="textMultiLine" />
 
         <Button
             android:id="@+id/btnLeerQR"
