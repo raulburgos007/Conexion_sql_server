@@ -56,18 +56,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         try {
             if (requestCode == 190) {
                 if (resultCode == Activity.RESULT_OK) {
-                    //existe resultado
-                    String result = data.getStringExtra("datos");
-                    String codigo = result.substring(5, 20).trim();
-                    String[] resultDividido = result.split(";");
-                    editTextCodActivo.setText(codigo);
-                    editTextDetalles.getText().clear();
-                    //editTextDetalles.setText(result);
-                    editTextDetalles.setText(resultDividido[1].trim() + '\n' +
-                            resultDividido[2].trim() + '\n' + resultDividido[3].trim() + '\n' + resultDividido[4].trim() + '\n' +
-                            resultDividido[5].trim() + '\n' + resultDividido[6].trim() + '\n' + resultDividido[7].trim() + '\n' +
-                            resultDividido[8].trim() + '\n' + resultDividido[9].trim() + '\n' + resultDividido[10].trim());
+                    String formato = data.getStringExtra("formato");
+                    if (formato.equals("QRCODE")) {
+                        //existe resultado y el codigo es QR
+                        String result = data.getStringExtra("datos");
+                        String codigo = result.substring(5, 20).trim();
+                        String[] resultDividido = result.split(";");
+                        editTextCodActivo.setText(codigo);
+                        editTextDetalles.getText().clear();
+                        //editTextDetalles.setText(result);
+                        editTextDetalles.setText(resultDividido[1].trim() + '\n' +
+                                resultDividido[2].trim() + '\n' + resultDividido[3].trim() + '\n' + resultDividido[4].trim() + '\n' +
+                                resultDividido[5].trim() + '\n' + resultDividido[6].trim() + '\n' + resultDividido[7].trim() + '\n' +
+                                resultDividido[8].trim() + '\n' + resultDividido[9].trim() + '\n' + resultDividido[10].trim());
                         //showMessageDialog("resultado",result,false);
+                    } else {
+                        editTextCodActivo.getText().clear();
+                        editTextDetalles.getText().clear();
+                        showMessageDialog("Error","El código escaneado no es del tipo QR",false);
+                    }
                 }
                 if (resultCode == Activity.RESULT_CANCELED) {
                 //No exite resultado

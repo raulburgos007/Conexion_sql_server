@@ -94,18 +94,16 @@ public class SimpleScannerActivity extends Activity implements ZBarScannerView.R
     @Override
     public void handleResult(Result rawResult) {
         final String datos = rawResult.getContents();
+        final String formato = rawResult.getBarcodeFormat().getName();
         //final String format = rawResult.getBarcodeFormat().getName();
         try{
             Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
             Ringtone r = RingtoneManager.getRingtone(getApplicationContext(),notification);
             r.play();
-
-
-
         } catch (Exception e) {
             Log.e(TAG, e.getLocalizedMessage());
-            Intent returnIntent = new Intent();
-            setResult(Activity.RESULT_OK, returnIntent);
+            //Intent returnIntent = new Intent();
+            //setResult(Activity.RESULT_OK, returnIntent);
             finish();
         }
         ;
@@ -116,6 +114,7 @@ public class SimpleScannerActivity extends Activity implements ZBarScannerView.R
         //startActivity(miIntent);
         Intent returnIntent = new Intent();
         returnIntent.putExtra("datos", datos);
+        returnIntent.putExtra("formato", formato);
         setResult(Activity.RESULT_OK, returnIntent);
         finish();
         //showMessageDialog("Resultado", fullMessage, false);
