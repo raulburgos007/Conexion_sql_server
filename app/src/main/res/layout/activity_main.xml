@@ -72,6 +72,19 @@
             android:hint="Aquí se mostrará el contenido de la etiqueta"
             android:inputType="textMultiLine" />
 
+        <TextView
+            android:id="@+id/textViewDetalles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="left"
+            android:maxLines="15"
+            android:singleLine="false"
+            />
+
         <Button
             android:id="@+id/btnLeerQR"
             style="@style/Widget.AppCompat.Button.Colored"

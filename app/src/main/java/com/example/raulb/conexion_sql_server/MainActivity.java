@@ -10,6 +10,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button btnLeerCodQR;
     private EditText editTextCodActivo;
     private EditText editTextDetalles;
+    private TextView textViewDetalles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +33,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnLeerCodQR = (Button) findViewById(R.id.btnLeerQR);
         editTextCodActivo = (EditText) findViewById(R.id.editTextCodActivo);
         editTextDetalles = (EditText) findViewById(R.id.editTextDetalles);
-        btnLeerCodQR.setOnClickListener(this);
-        //Bundle resultado = this.getIntent().getExtras();
-        //if (resultado != null) {
-        //    String datos = resultado.getString("datos");
-        //    showMessageDialog("resultado",datos,false);
+        textViewDetalles = (TextView) findViewById(R.id.textViewDetalles);
+        //textViewDetalles.setMovementMethod(new ScrollingMovementMethod());
         //}
     }
 
@@ -70,6 +69,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                                 resultDividido[5].trim() + '\n' + resultDividido[6].trim() + '\n' + resultDividido[7].trim() + '\n' +
                                 resultDividido[8].trim() + '\n' + resultDividido[9].trim() + '\n' + resultDividido[10].trim());
                         //showMessageDialog("resultado",result,false);
+                        textViewDetalles.setText(resultDividido[1].trim() + '\n' +
+                                resultDividido[2].trim() + '\n' + resultDividido[3].trim() + '\n' + resultDividido[4].trim() + '\n' +
+                                resultDividido[5].trim() + '\n' + resultDividido[6].trim() + '\n' + resultDividido[7].trim() + '\n' +
+                                resultDividido[8].trim() + '\n' + resultDividido[9].trim() + '\n' + resultDividido[10].trim() + '\n' +
+                                resultDividido[1].trim() + '\n' +
+                                resultDividido[2].trim() + '\n' + resultDividido[3].trim() + '\n' + resultDividido[4].trim() + '\n' +
+                                resultDividido[5].trim() + '\n' + resultDividido[6].trim() + '\n' + resultDividido[7].trim() + '\n' +
+                                resultDividido[8].trim() + '\n' + resultDividido[9].trim() + '\n' + resultDividido[10].trim());
                     } else {
                         editTextCodActivo.getText().clear();
                         editTextDetalles.getText().clear();
