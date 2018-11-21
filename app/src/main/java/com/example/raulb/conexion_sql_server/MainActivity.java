@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button btnLeerCodQR;
     private EditText editTextCodActivo;
-    private EditText editTextDetalles;
     private TextView textViewDetalles;
 
     @Override
@@ -32,9 +31,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         btnLeerCodQR = (Button) findViewById(R.id.btnLeerQR);
         editTextCodActivo = (EditText) findViewById(R.id.editTextCodActivo);
-        editTextDetalles = (EditText) findViewById(R.id.editTextDetalles);
         textViewDetalles = (TextView) findViewById(R.id.textViewDetalles);
-        //textViewDetalles.setMovementMethod(new ScrollingMovementMethod());
+        textViewDetalles.setMovementMethod(new ScrollingMovementMethod());
+        btnLeerCodQR.setOnClickListener(this);
         //}
     }
 
@@ -62,38 +61,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         String codigo = result.substring(5, 20).trim();
                         String[] resultDividido = result.split(";");
                         editTextCodActivo.setText(codigo);
-                        editTextDetalles.getText().clear();
+                        textViewDetalles.setText("");
                         //editTextDetalles.setText(result);
-                        editTextDetalles.setText(resultDividido[1].trim() + '\n' +
+                        textViewDetalles.setText(resultDividido[1].trim() + '\n' +
                                 resultDividido[2].trim() + '\n' + resultDividido[3].trim() + '\n' + resultDividido[4].trim() + '\n' +
                                 resultDividido[5].trim() + '\n' + resultDividido[6].trim() + '\n' + resultDividido[7].trim() + '\n' +
                                 resultDividido[8].trim() + '\n' + resultDividido[9].trim() + '\n' + resultDividido[10].trim());
                         //showMessageDialog("resultado",result,false);
-                        textViewDetalles.setText(resultDividido[1].trim() + '\n' +
-                                resultDividido[2].trim() + '\n' + resultDividido[3].trim() + '\n' + resultDividido[4].trim() + '\n' +
-                                resultDividido[5].trim() + '\n' + resultDividido[6].trim() + '\n' + resultDividido[7].trim() + '\n' +
-                                resultDividido[8].trim() + '\n' + resultDividido[9].trim() + '\n' + resultDividido[10].trim() + '\n' +
-                                resultDividido[1].trim() + '\n' +
-                                resultDividido[2].trim() + '\n' + resultDividido[3].trim() + '\n' + resultDividido[4].trim() + '\n' +
-                                resultDividido[5].trim() + '\n' + resultDividido[6].trim() + '\n' + resultDividido[7].trim() + '\n' +
-                                resultDividido[8].trim() + '\n' + resultDividido[9].trim() + '\n' + resultDividido[10].trim());
                     } else {
                         editTextCodActivo.getText().clear();
-                        editTextDetalles.getText().clear();
+                        textViewDetalles.setText("");
                         showMessageDialog("Error","El código escaneado no es del tipo QR",false);
                     }
                 }
                 if (resultCode == Activity.RESULT_CANCELED) {
                 //No exite resultado
                     editTextCodActivo.getText().clear();
-                    editTextDetalles.getText().clear();
+                    textViewDetalles.setText("");
                     showMessageDialog("Error", "No se pudo leer el código QR", false);
                 }
             }
         }
         catch (Exception e){
             editTextCodActivo.getText().clear();
-            editTextDetalles.getText().clear();
+            textViewDetalles.setText("");
             Log.e(TAG, e.getLocalizedMessage());
             showMessageDialog("Error", "Error al leer e interpretar  el código QR\n"+e.getLocalizedMessage(), false);                    }
     }//onActivityResult
