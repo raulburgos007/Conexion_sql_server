@@ -198,7 +198,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String descripcionActivo = rs.getString("descripcion") == null ? "Sin descripción" : rs.getString("descripcion").trim();
                 String observacionesActivo = rs.getString("observaciones") == null ? "Sin observaciones" : rs.getString("observaciones").trim();
                 datos= descripcionActivo + "\nResponsable: " + rs.getString("responsable") + "\nEdificio: " + rs.getString("edificio") +
-                        "\nPiso: " + rs.getString("piso") + "\nAmiente: " +  rs.getString("ambiente") + "\nEstado: " +  rs.getString("estado") +
+                        "\nPiso: " + rs.getString("piso") + "\nAmbiente: " +  rs.getString("ambiente") + "\nEstado: " +  rs.getString("estado") +
                         "\nObservaciones: " + observacionesActivo + "\nUltima verificación: " +  rs.getString("fecharegistro");
             }
         }catch(Exception e){
